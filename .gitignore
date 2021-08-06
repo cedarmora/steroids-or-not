@@ -1,3 +1,4 @@
+
 *.bak
 .gitattributes
 .last_checked
@@ -14,6 +15,7 @@ tags
 __pycache__/
 *.py[cod]
 *$py.class
+*.pkl
 
 # C extensions
 *.so
