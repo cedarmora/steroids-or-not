@@ -5,7 +5,8 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"unpickle": "01_pushshift.ipynb",
          "select_mostly_useful": "01_pushshift.ipynb"}
 
-modules = ["pushshift.py"]
+modules = ["firsttry.py",
+           "pushshift.py"]
 
 doc_url = "https://cedarmora.github.io/steroidsornot/"
 
