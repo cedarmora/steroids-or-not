@@ -11,15 +11,27 @@ from .firsttry import PrawClient
 
 # Cell
 class SubmissionsHandler():
-    def __init__(self, path):
+    def __init__(self, path, remove_irrelevant=True):
         self.path = path
         self.submissions = []
-        self.mostly_useful = []
 
-        self._unpickle(path)
-        self._select_mostly_useful()
+        self._unpickle(path, remove_irrelevant)
 
-    def _unpickle(self, path):
+    def unlabeled_data(self):
+        unlabeled = []
+        for submission in self.submissions:
+            pass
+
+    def common_domains(self):
+        '''
+            Show the number of posts that link to each domain
+        '''
+        pprint(Counter([post['domain'] for post in self.submissions]).most_common())
+
+    def make_sqllite_database(self):
+        pass
+
+    def _unpickle(self, path, remove_irrelevant):
         self.submissions = []
         with open(path, "rb") as file:
             while 1:
@@ -29,6 +41,9 @@ class SubmissionsHandler():
                     break
 
         print(f'Unpickled {len(self.submissions)} objects.')
+
+        if remove_irrelevant:
+            self._select_mostly_useful()
 
     def _select_mostly_useful(self):
         '''
@@ -41,7 +56,7 @@ class SubmissionsHandler():
         doesn't get updated when the post changes, so there
         are many posts which were deleted after fact.
         '''
-        self.mostly_useful = []
+        mostly_useful = []
         for post in self.submissions:
             if (post['num_comments'] >= 2 and
                     'selftext' in post and
@@ -50,18 +65,13 @@ class SubmissionsHandler():
                     post.get('removed_by_category') == None and
                     post.get('link_flair_text') != 'Meme' and
                     post.get('domain') == 'i.redd.it'):
-                self.mostly_useful.append(post)
+                mostly_useful.append(post)
 
-        self.mostly_useful
-        print(f'{len(self.mostly_useful)} are mostly useful.\n')
+        self.submissions = mostly_useful
 
-        # Show that none are deleted
-        selftext = [post['selftext'] for post in self.mostly_useful]
+        print(f'{len(self.submissions)} are mostly useful.\n')
+
+        # Show that no posts were deleted when pushshift downloaded them
+        selftext = [post['selftext'] for post in self.submissions]
         print('This should show no [deleted] or [removed] entries:')
         print(Counter(selftext).most_common())
-
-    def common_domains(self):
-        '''
-            Show the number of posts that link to each domain
-        '''
-        pprint(Counter([post['domain'] for post in self.submissions]).most_common())
