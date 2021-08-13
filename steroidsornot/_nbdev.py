@@ -2,11 +2,12 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"unpickle": "01_pushshift.ipynb",
-         "select_mostly_useful": "01_pushshift.ipynb"}
+index = {"PrawClient": "00_firsttry.ipynb",
+         "SubmissionsHandler": "03_submissionshandler.ipynb"}
 
 modules = ["firsttry.py",
-           "pushshift.py"]
+           "pushshift.py",
+           "submissionshandler.py"]
 
 doc_url = "https://cedarmora.github.io/steroidsornot/"
 
