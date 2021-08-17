@@ -3,11 +3,12 @@
 __all__ = ['SubmissionsHandler']
 
 # Cell
-import praw
 import pickle
+import json
 from collections import Counter
 from pprint import pprint
-from .firsttry import PrawClient
+import sqlite3
+from pathlib import Path
 
 # Cell
 class SubmissionsHandler():
@@ -27,9 +28,6 @@ class SubmissionsHandler():
             Show the number of posts that link to each domain
         '''
         pprint(Counter([post['domain'] for post in self.submissions]).most_common())
-
-    def make_sqllite_database(self):
-        pass
 
     def _unpickle(self, path, remove_irrelevant):
         self.submissions = []
