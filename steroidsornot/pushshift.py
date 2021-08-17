@@ -4,15 +4,10 @@ __all__ = []
 
 # Cell
 
-# Loads environment variables from .env file
-
 import os
-import praw
 import requests
 import time
 import datetime
-import sys
 import pickle
 from requests.adapters import HTTPAdapter
-from collections import Counter
 import webbrowser
