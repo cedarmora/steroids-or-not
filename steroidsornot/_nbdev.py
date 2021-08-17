@@ -3,11 +3,16 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"PrawClient": "00_firsttry.ipynb",
-         "SubmissionsHandler": "03_submissionshandler.ipynb"}
+         "SubmissionsHandler": "03_submissionshandler.ipynb",
+         "database_path": "05_database.ipynb",
+         "engine": "05_database.ipynb",
+         "mapper_registry": "05_database.ipynb",
+         "Base": "05_database.ipynb"}
 
 modules = ["firsttry.py",
            "pushshift.py",
-           "submissionshandler.py"]
+           "submissionshandler.py",
+           "database.py"]
 
 doc_url = "https://cedarmora.github.io/steroidsornot/"
 
