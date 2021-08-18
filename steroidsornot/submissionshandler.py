@@ -53,6 +53,18 @@ class SubmissionsHandler():
         if remove_irrelevant:
             self._select_mostly_useful()
 
+    def is_useful(self, post):
+        if (post['num_comments'] >= 2 and
+                    'selftext' in post and
+                    post['selftext'] != '[deleted]' and
+                    post['selftext'] != '[removed]' and
+                    post.get('removed_by_category') == None and
+                    post.get('link_flair_text') != 'Meme' and
+                    post.get('domain') == 'i.redd.it'):
+            return True
+        else:
+            return False
+
     def _select_mostly_useful(self):
         '''
         Remove mostly invalid posts, stuff like:
@@ -66,13 +78,7 @@ class SubmissionsHandler():
         '''
         mostly_useful = []
         for post in self.submissions:
-            if (post['num_comments'] >= 2 and
-                    'selftext' in post and
-                    post['selftext'] != '[deleted]' and
-                    post['selftext'] != '[removed]' and
-                    post.get('removed_by_category') == None and
-                    post.get('link_flair_text') != 'Meme' and
-                    post.get('domain') == 'i.redd.it'):
+            if self.is_useful(post):
                 mostly_useful.append(post)
 
         self.submissions = mostly_useful
