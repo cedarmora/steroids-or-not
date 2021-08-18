@@ -9,6 +9,8 @@ from collections import Counter
 from pprint import pprint
 import sqlite3
 from pathlib import Path
+from .database import Session
+from .submission import Submission
 
 # Cell
 class SubmissionsHandler():
@@ -18,10 +20,18 @@ class SubmissionsHandler():
 
         self._unpickle(path, remove_irrelevant)
 
-    def unlabeled_data(self):
-        unlabeled = []
-        for submission in self.submissions:
-            pass
+    def export_to_database(self):
+        session = Session()
+
+        for pushshift_submission in self.submissions:
+            database_submission = Submission(
+                data=json.dumps(pushshift_submission)
+            )
+
+            session.add(database_submission)
+
+        session.commit()
+        session.close()
 
     def common_domains(self):
         '''
