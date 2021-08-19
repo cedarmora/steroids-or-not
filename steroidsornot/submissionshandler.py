@@ -57,6 +57,7 @@ class SubmissionsHandler():
     def is_useful(self, post):
         if (post['num_comments'] >= 2 and
                     'selftext' in post and
+                    post.get('crosspost_parent_list') == None and
                     post['selftext'] != '[deleted]' and
                     post['selftext'] != '[removed]' and
                     post.get('removed_by_category') == None and
