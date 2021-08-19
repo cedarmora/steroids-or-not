@@ -14,11 +14,12 @@ from .submission import Submission
 
 # Cell
 class SubmissionsHandler():
-    def __init__(self, path, remove_irrelevant=True):
+    def __init__(self, path=None, unpickle=False, remove_irrelevant=True):
         self.path = path
         self.submissions = []
 
-        self._unpickle(path, remove_irrelevant)
+        if unpickle:
+            self._unpickle(path, remove_irrelevant)
 
     def export_to_database(self):
         session = Session()

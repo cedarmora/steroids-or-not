@@ -4,7 +4,7 @@ __all__ = ['Label', 'Submission']
 
 # Cell
 import enum
-from sqlalchemy import Table, Column, Integer, Enum, JSON
+from sqlalchemy import Table, Column, Integer, Enum, JSON, Text
 from .database import Base
 
 # Cell
@@ -13,6 +13,8 @@ class Label(enum.Enum):
     steroids = 2
     uncertain = 3
     irrelevant = 4
+    deleted = 5
+    autoremoved = 6
 
 # Cell
 class Submission(Base):
@@ -21,6 +23,7 @@ class Submission(Base):
     id = Column(Integer, primary_key=True)
     label = Column(Enum(Label))
     data = Column(JSON)
+    image_path = Column(Text)
 
     def __repr__(self):
         return f"Submission(id={self.id!r}, label={self.label!r}, data={self.data!r})"

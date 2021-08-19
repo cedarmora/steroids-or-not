@@ -3,6 +3,14 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"PrawClient": "00_firsttry.ipynb",
+         "storage_path": "00_firsttry.ipynb",
+         "natural_path": "00_firsttry.ipynb",
+         "steroids_path": "00_firsttry.ipynb",
+         "uncertain_path": "00_firsttry.ipynb",
+         "irrelevant_path": "00_firsttry.ipynb",
+         "get_thumbnail_index": "00_firsttry.ipynb",
+         "get_thumbnail": "00_firsttry.ipynb",
+         "get_images": "00_firsttry.ipynb",
          "SubmissionsHandler": "03_submissionshandler.ipynb",
          "create_db": "05_database.ipynb",
          "mapper_registry": "05_database.ipynb",

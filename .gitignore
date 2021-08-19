@@ -1,5 +1,11 @@
 *.db
 
+# exclude everything
+data/*
+
+# except the folder itself
+!data/.gitkeep
+
 *.bak
 .gitattributes
 .last_checked
