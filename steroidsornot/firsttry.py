@@ -46,8 +46,7 @@ uncertain_path = storage_path / 'uncertain'
 irrelevant_path = storage_path / 'irrelevant'
 
 for path in [natural_path, steroids_path, uncertain_path, irrelevant_path]:
-    if not path.exists():
-        path.mkdir()
+    path.mkdir(parents=True, exist_ok=True)
 
 # Cell
 def get_thumbnail_index(submission):
