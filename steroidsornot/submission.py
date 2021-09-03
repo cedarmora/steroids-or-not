@@ -5,7 +5,7 @@ __all__ = ['Label', 'Submission']
 # Cell
 import enum
 import glob
-import os
+from pathlib import Path
 from sqlalchemy import Table, Column, Integer, Enum, JSON, Text
 from .database import Base, Session
 
@@ -17,6 +17,8 @@ class Label(enum.Enum):
     irrelevant = 4
     deleted = 5
     autoremoved = 6
+    bad_natural = 7
+    bad_steroids = 8
 
 # Cell
 class Submission(Base):
