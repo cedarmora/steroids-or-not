@@ -2,6 +2,8 @@
 
 > (hopefully) A computer vision classifier that detects whether fit people have used steroids or not, using an image as input.
 
+## Technology
+
 Built using:
 
 - Fast.AI to train the model
@@ -11,6 +13,17 @@ Built using:
 - PRAW to extract data from Reddit
 - Pushshift as a third party workaround for Reddit's limited API
 - SQLite as a database to keep data organized
+- Alembic to simplify database interactions
+- [r/nattyorjuice](https://www.reddit.com/r/nattyorjuice/) as a data source
+
+
+## Data caveats
+It is not completely based in ground truth, as r/nattyorjuice is educated guesses, not admitted steroid use, which complicates prediction. However, the comments often describe objective, observable criteria which is often based in the user's own steroid use.
+
+## Results
+
+After about a month and half of working on it full time, the last attempt that I made to train the classifier was right on the line of predicting the labels better than chance. The classifier was overfitting, I think it just needed more data but I wasn't certain how to tell why it was not predicting labels better than chance. The task set before the machine learning model may have also been complicated by the subjects being in different poses, with varying amounts of clothing, messy backgrounds, multiple people in the photo, etc. In any case, this project required months more work to make it work properly, and I had other things I wanted to do, so I moved on.
+    
 
 ## Install
 
