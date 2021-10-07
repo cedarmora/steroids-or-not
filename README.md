@@ -13,7 +13,7 @@ Built using:
 - PRAW to extract data from Reddit
 - Pushshift as a third party workaround for Reddit's limited API
 - SQLite as a database to keep data organized
-- Alembic to simplify database interactions
+- SQLAlchemy/Alembic to simplify database interactions
 - [r/nattyorjuice](https://www.reddit.com/r/nattyorjuice/) as a data source
 
 
